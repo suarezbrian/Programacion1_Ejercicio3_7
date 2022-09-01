@@ -2,8 +2,7 @@
  ============================================================================
  Name        : Ejercicio3_7.c
  Author      : Brian Alan Suarez
- Version     :
- Copyright   : Your copyright notice
+ Version     : Ejercicio3_6 (Funciones)
  Description :
 
 Realizar un programa que: asigne a las variables numero1 y numero2
