@@ -17,8 +17,9 @@ por pantalla.
 #include <stdlib.h>
 
 int operacion(int pNumero, int sNumero, char letra);
-char validarLetra();
+char validarLetra(char letra);
 int ingresarNumero();
+char ingresarLetra();
 int validarNumero(int numero);
 int resta(int pNumero, int sNumero);
 int suma(int pNumero, int sNumero);
@@ -35,8 +36,8 @@ int main()
 
 	pNumero = ingresarNumero();
 	sNumero = ingresarNumero();
+	letra = ingresarLetra();
 
-	letra = validarLetra();
 	resultado = operacion(pNumero, sNumero, letra);
 
 	letra == 's' ? printf("\nOPERACION SUMA"):printf("\nOPERACION RESTA");
@@ -58,16 +59,17 @@ int operacion(int pNumero, int sNumero, char letra)
 	case 'r':
 		resultado = resta(pNumero, sNumero);
 		break;
+	default:
+		printf("Erorr - al validar la letra.");
 	}
 
 	return resultado;
 }
 
-char validarLetra()
+char validarLetra(char letra)
 {
-	char letra;
 	fflush(stdin);
-	printf("Ingrese que operacion desea realizar : 's' = Sumar / 'r' = Restar : ");
+	printf("Error - Ingrese que operacion valida : 's' = Sumar / 'r' = Restar : ");
 	scanf("%c", &letra);
 
 	switch(letra)
@@ -96,13 +98,28 @@ int ingresarNumero()
 	return numero;
 }
 
+char ingresarLetra()
+{
+	char letra;
+
+	fflush(stdin);
+	printf("Ingrese que operacion desea realizar : 's' = Sumar / 'r' = Restar : ");
+	scanf("%c", &letra);
+
+	letra = validarLetra(letra);
+
+	return letra;
+
+}
 
 int validarNumero(int numero)
 {
-	while(numero < 10 || numero > 100)
+	if(numero < 10 || numero > 100)
 	{
 		printf("Error - Ingrese un numero valido (10-100) : ");
 		scanf("%d", &numero);
+
+		validarNumero(numero);
 	}
 
 	return numero;
